@@ -6,6 +6,8 @@ abbr -a g git
 abbr -a gc 'git checkout'
 abbr -a img sxiv
 abbr -a pdf zathura
+abbr -a unmount 'udisksctl unmount -b /dev/'
+abbr -a power-off 'udisksctl power-off -b /dev/'
 
 if command -v exa > /dev/null
 	abbr -a l 'exa'
