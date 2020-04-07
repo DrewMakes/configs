@@ -17,10 +17,8 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
 background = #222
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #888
 primary = #ffb52a
@@ -38,30 +36,19 @@ bottom = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
+border-size = 0
 line-size = 2
 padding = 1
-line-color = #f00
 module-margin = 1
 
-border-size = 0
-
-padding-left = 2
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-#font-0 = fixed:pixelsize=10;1
-#font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-#font-2 = siji:pixelsize=10;1
 font-0 = "Noto Sans Mono:size=10;1"
 font-1 = "Noto Sans Mono:size=10;1"
 font-2 = "Noto Sans Symbols:size=10;1"
 font-3 = "Noto Sans Symbols2:size=10;1"
 
-modules-left = date xwindow
+modules-left = bspwm xwindow
 modules-center =
-modules-right = wlan cpu battery 
+modules-right = wlan cpu date battery 
 
 tray-position = right
 tray-padding = 2
@@ -133,44 +120,6 @@ label-empty-padding = 2
 ; Separator in between workspaces
 ; label-separator = |
 
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
-
-; focused = Active workspace on focused monitor
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
-label-unfocused-padding = 2
-
-; visible = Active workspace on unfocused monitor
-label-visible = %index%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
-
-; urgent = Workspace with urgency hint set
-label-urgent = %index%
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-; Separator in between workspaces
-; label-separator = |
-
-
 [module/mpd]
 type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
@@ -209,7 +158,7 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-#format-prefix = " "
+format-prefix = "💻 "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
 label = %percentage:2%%
@@ -217,65 +166,68 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = "🗍 "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
-label = %percentage_used%%
+label = %percentage_used:2%%
 
 [module/wlan]
 type = internal/network
 interface = wlan0
-interval = 3.0
+interval = 5.0
 
 format-connected = <label-connected>
 format-connected-underline = #9f78e1
 label-connected = %essid%
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected =
 
-
-#ramp-signal-0 = 
-#ramp-signal-1 = 
-#ramp-signal-2 = 
-#ramp-signal-3 = 
-#ramp-signal-4 = 
-#ramp-signal-foreground = ${colors.foreground-al}
+ramp-signal-0 = 🌧
+ramp-signal-1 = 🌦
+ramp-signal-2 = 🌥
+ramp-signal-3 = 🌤
+ramp-signal-4 = 🌣
 
 [module/eth]
 type = internal/network
 interface = enp3s0f1
 interval = 3.0
 
-format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-underline = #115511
+format-connected-prefix = "🖧 "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
 format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
 interval = 5
 
 date = "%a %d"
-date-alt = " %Y-%m-%d"
+date-alt = %a %b %d
 
-time = %H:%M
-time-alt = %H:%M:%S
+time = %I:%M
+time-alt = %I:%M%p
 
-format-prefix = 
+format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
 label = %date% %time%
+
+
+[module/github]
+type = internal/github
+token = ${file:/home/jon/.config/github/notifications.token}
+user = jonhoo
+empty-notifications = false
+;label = %{u#ff9900 +u} %notifications% %{u-}
+label = %{u#0099ff +u} 📫 %{u-}
+interval = 10
+
+[settings]
+screenchange-reload = true
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -311,7 +263,7 @@ format-volume = <label-volume> <bar-volume>
 label-volume = VOL
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
+format-muted-prefix = 
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 
@@ -341,25 +293,21 @@ full-at = 98
 format-charging = <label-charging>
 format-charging-underline = #ffb52a
 
-format-discharging =  <label-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-#ramp-capacity-0 = ⚋
-#ramp-capacity-1 = 
-#ramp-capacity-2 = 
-#ramp-capacity-foreground = ${colors.foreground-alt}
+format-full = <label-full>
+format-full-underline = ${self.format-charging-underline}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
+ramp-capacity-0 = ⚋
+ramp-capacity-1 = ⚊
+ramp-capacity-2 = ⚍
+ramp-capacity-3 = ⚌
+ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
+label-charging = ⚡ %percentage%%
+label-discharging = %percentage%%
+label-full = " ☀ "
 
 [module/temperature]
 type = internal/temperature
@@ -408,14 +356,6 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
 
 [global/wm]
 margin-top = 5

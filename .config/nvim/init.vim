@@ -11,6 +11,7 @@ Plug 'machakann/vim-highlightedyank'
 
 " Syntactic language support
 Plug 'rust-lang/rust.vim'
+Plug 'stephpy/vim-yaml'
 
 " Semantic language support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -21,6 +22,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 call plug#end()
+
+
+colorscheme base16-atelier-dune
 
 " Display full file path in lightline
 let g:lightline = {

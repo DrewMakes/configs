@@ -27,6 +27,10 @@ set PATH $HOME/.cargo/bin $PATH
 # $ config commit -m '<message>'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
+if test -f /usr/share/autojump/autojump.fish;
+	source /usr/share/autojump/autojump.fish;
+end
+
 function fish_greeting
 	echo
 	echo -e (uname -ro | awk '{print " \\\\e[1mOS: \\\\e[0;32m"$0"\\\\e[0m"}')
