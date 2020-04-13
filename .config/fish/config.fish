@@ -6,7 +6,8 @@ abbr -a g git
 abbr -a gc 'git checkout'
 abbr -a img sxiv
 abbr -a pdf zathura
-abbr -a unmount 'udisksctl unmount -b /dev/'
+abbr -a backup 'sudo timeshift-gtk'
+abbr -a unmount 'sudo udisksctl unmount -b /dev/'
 abbr -a power-off 'udisksctl power-off -b /dev/'
 abbr -a audio pavucontrol
 abbr -a unzip '7z x'
