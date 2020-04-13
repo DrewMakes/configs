@@ -8,6 +8,11 @@ abbr -a img sxiv
 abbr -a pdf zathura
 abbr -a unmount 'udisksctl unmount -b /dev/'
 abbr -a power-off 'udisksctl power-off -b /dev/'
+abbr -a audio pavucontrol
+abbr -a unzip '7z x'
+abbr -a zip '7z a'
+abbr -a discord cordless
+abbr -a slack ripcord
 
 if command -v exa > /dev/null
 	abbr -a l 'exa'

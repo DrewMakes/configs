@@ -18,6 +18,9 @@ super + alt + {q,r}
 super + {_,shift + }c
 	bspc node -{c,k}
 
+super + shift + Return
+	bspc node -c
+
 # alternate between the tiled and monocle layout
 super + m
 	bspc desktop -l next
@@ -112,9 +115,9 @@ super + {Left,Down,Up,Right}
 
 # terminal emulator
 super + Return
-	alacritty
+	st
 
 # DMENU SCRIPTS (Alt + Ctrl + Key)
 # run program launcher
-alt + ctrl + Return
+ctrl + Return
 	dmenu_run

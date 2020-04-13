@@ -2,7 +2,7 @@
 
 $HOME/.config/polybar/launch.sh
 
-bspc monitor HDMI-0 -d I II III IV V 
+bspc monitor HDMI-0 -d web a b c sfx 
 
 bspc config border_width         0
 bspc config window_gap		 0

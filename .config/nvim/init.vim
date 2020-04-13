@@ -8,6 +8,7 @@ call plug#begin()
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
+Plug 'chriskempson/base16-vim'
 
 " Syntactic language support
 Plug 'rust-lang/rust.vim'
@@ -23,9 +24,6 @@ Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
-
-colorscheme base16-atelier-dune
-
 " Display full file path in lightline
 let g:lightline = {
       \ 'component_function': {
@@ -36,10 +34,20 @@ function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
 
-
 " =============================================================================
 " # GUI settings
 " =============================================================================
+
+" https://github.com/chriskempson/base16-vim
+" let base16colorspace=256  " Access colors present in 256 colorspace
+" st vim settings
+set t_8f=^[[38;2;%lu;%lu;%lum        " set foreground color
+set t_8b=^[[48;2;%lu;%lu;%lum        " set background color
+colorscheme base16-atelier-dune
+set t_Co=256                         " Enable 256 colors
+set termguicolors                    " Enable GUI colors for the terminal to get truecolor
+
+
 set relativenumber " Relative line numbers
 set number " Also show current absolute line
 set synmaxcol=500
