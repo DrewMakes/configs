@@ -1,4 +1,5 @@
 abbr -a ss 'sudo systemctl'
+
 abbr -a sp 'sudo pacman -S'
 abbr -a c cargo
 abbr -a e nvim
@@ -14,6 +15,11 @@ abbr -a unzip '7z x'
 abbr -a zip '7z a'
 abbr -a discord cordless
 abbr -a slack ripcord
+
+# vi mode
+function fish_user_key_bindings
+  fish_vi_key_bindings
+end
 
 if command -v exa > /dev/null
 	abbr -a l 'exa'
