@@ -15,7 +15,7 @@ case "$cmd" in
     parse_urls "$input" | awk '!a[$0]++' | dmenu -i -l 16 -p 'Copy URL' -l 10 | xclip -selection clipboard
     ;;
   open)
-    xdg-open "$(parse_urls "$input" | tail -n 1)"
+    parse_urls "$input" | awk '!a[$0]++' | dmenu -i -l 16 -p 'Open URL' -l 10 | xargs xdg-open
     ;;
 esac
 
