@@ -1,6 +1,7 @@
 set -U fish_user_paths $fish_user_paths $HOME/.local/bin
 set EDITOR "nvim"
-set TERM "st"
+set TERMINAL "st"
+set BROWSER "firefox"
 
 abbr -a ss 'sudo systemctl'
 
