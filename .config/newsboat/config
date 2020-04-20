@@ -31,6 +31,6 @@ color article cyan default
 
 # browser firefox
 macro , open-in-browser
-macro m set browser "tsp mpv %u" ; open-in-browser ; set browser $BROWSER"
+macro m set browser "tsp mpv --no-config --slang=en -ytdl-raw-options=write-auto-sub=,sub-lang=en %u" ; open-in-browser ; set browser $BROWSER"
 macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser $BROWSER"
 macro v set browser "tsp youtube-dl"; open-in-browser ; set browser $BROWSER"

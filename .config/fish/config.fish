@@ -12,7 +12,7 @@ abbr -a g git
 abbr -a gc 'git checkout'
 abbr -a img sxiv
 abbr -a pdf zathura
-abbr -a play 'tsp mpv "'
+abbr -a play 'tsp mpv --no-config --slang=en -ytdl-raw-options=write-auto-sub=,sub-lang=en "'
 abbr -a backup 'sudo timeshift-gtk'
 abbr -a unmount 'sudo udisksctl unmount -b /dev/'
 abbr -a power-off 'udisksctl power-off -b /dev/'
@@ -21,6 +21,9 @@ abbr -a unzip '7z x'
 abbr -a zip '7z a'
 abbr -a discord cordless
 abbr -a slack ripcord
+abbr -a torrent-start transmission-daemon
+abbr -a torrent-dl 'transmission-remote -a "'
+abbr -a torrent transmission-remote-cli
 
 # vi mode
 function fish_user_key_bindings
