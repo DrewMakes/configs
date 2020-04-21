@@ -13,6 +13,7 @@ abbr -a gc 'git checkout'
 abbr -a img sxiv
 abbr -a pdf zathura
 abbr -a play 'tsp mpv --no-config --slang=en -ytdl-raw-options=write-auto-sub=,sub-lang=en "'
+abbr -a music mocp
 abbr -a backup 'sudo timeshift-gtk'
 abbr -a unmount 'sudo udisksctl unmount -b /dev/'
 abbr -a power-off 'udisksctl power-off -b /dev/'
