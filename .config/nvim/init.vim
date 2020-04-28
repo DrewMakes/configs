@@ -5,17 +5,30 @@ let mapleader = "\<Space>"
 " =============================================================================
 
 call plug#begin()
+
+" VIM enhancements
+Plug 'ciaranm/securemodelines'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'justinmk/vim-sneak'
+Plug 'vimwiki/vimwiki'
+
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
+Plug 'andymass/vim-matchup'
 Plug 'chriskempson/base16-vim'
 
 " Syntactic language support
 Plug 'rust-lang/rust.vim'
+Plug 'rhysd/vim-clang-format'
+Plug 'dag/vim-fish'
 Plug 'stephpy/vim-yaml'
+Plug 'cespare/vim-toml'
+Plug 'plasticboy/vim-markdown'
 
 " Semantic language support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
@@ -96,17 +109,9 @@ nnoremap k gk
 map H ^
 map L $
 
-" system clipboard integration with xclip installed on system
-function! ClipboardYank()
-  call system('xclip -i -selection clipboard', @@)
-endfunction
-function! ClipboardPaste()
-  let @@ = system('xclip -o -selection clipboard')
-endfunction
-
-vnoremap <silent> y y:call ClipboardYank()<cr>
-vnoremap <silent> d d:call ClipboardYank()<cr>
-nnoremap <silent> p :call ClipboardPaste()<cr>p
+" Copy to + Register so C-v works outside vim
+nnoremap y "+y
+vnoremap y "+y
 
 " No arrow keys --- force yourself to use the home row
 nnoremap <up> <nop>
@@ -125,6 +130,10 @@ nnoremap <leader><leader> <c-^>
 
 " Quick-save
 nmap <leader>w :w<CR>
+
+let g:rustfmt_autosave = 1
+" :RustPlay
+let g:rust_clip_command = 'xclip -selection clipboard'
 
 " 'Smart' nevigation
 nmap <silent> E <Plug>(coc-diagnostic-prev)
