@@ -117,7 +117,7 @@ vnoremap y "+y
 nnoremap Y "+Y
 
 nnoremap P "+P
-nnoremap p "+p"
+nnoremap p "+p
 
 " No arrow keys --- force yourself to use the home row
 nnoremap <up> <nop>
