@@ -74,7 +74,6 @@ set shortmess+=c " don't give |ins-completion-menu| messages.
 
 " while in NORMAL mode ; is :
 nnoremap ; :
-
 " next Sneak
 map . <Plug>Sneak_;
 
@@ -115,6 +114,10 @@ map L $
 " Copy to + Register so C-v works outside vim
 nnoremap y "+y
 vnoremap y "+y
+nnoremap Y "+Y
+
+nnoremap P "+P
+nnoremap p "+p"
 
 " No arrow keys --- force yourself to use the home row
 nnoremap <up> <nop>
