@@ -75,6 +75,9 @@ set shortmess+=c " don't give |ins-completion-menu| messages.
 " while in NORMAL mode ; is :
 nnoremap ; :
 
+" next Sneak
+map . <Plug>Sneak_;
+
 " Ctrl+c and Ctrl+j as Esc
 " Ctrl-j is a little awkward unfortunately:
 " https://github.com/neovim/neovim/issues/5916
