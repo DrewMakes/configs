@@ -1,0 +1,60 @@
+#!/bin/sh
+
+# Bandaids
+alias \
+	sw="sudo systemctl start dhcpcd@wlan0"
+
+# Use neovim for vim if present.
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	bat="cat /sys/class/power_supply/BAT?/capacity" \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -v" \
+	ls="exa --group-directories-first" \
+	ll="exa -l --group-directories-first" \
+	lll="exa -la --group-directories-first" \
+	mkd="mkdir -pv" \
+	yt="youtube-dl --add-metadata -i" \
+	yta="yt -x -f bestaudio/best" \
+	ffmpeg="ffmpeg -hide_banner"
+
+# Colorize commands when possible.
+alias \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi"
+
+# These common commands are just too long! Abbreviate them.
+alias \
+	config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME" \
+	mount="udisksctl mount -b /dev/" \
+	unmount="sudo udisksctl unmount -b /dev/" \
+	extoff="udisksctl power-off -b /dev/" \
+	unzip="7z x" \
+	zip="7z a" \
+	aud="pavucontrol" \
+	sp="sudo pacman" \
+	f="$FILE" \
+	e="$EDITOR" \
+	v="$EDITOR" \
+	cg="cargo" \
+	g="git" \
+	pdf="zathura" \
+        img="sxiv" \
+	vid="tsp mpv --no-config --slang=en -ytdl-raw-options=write-auto-sub=,sub-lang=en \"" \
+	mus="mocp" \
+	discord="cordless" \
+	slack="ripcord" \
+	td="transmission-daemon" \
+	tdl="transmission-remote -a " \
+	tcli="transmission-remote-cli"
+
+# Use 'config' instead of 'git' when adding dotfiles to github
+alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME" \
+
+# Fuzzy scripts
+se() { du -a ~/.scripts/ ~/.config | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
+c() { cp -v "$1" "$(awk '{print $2}' ~/.config/bmdirs | fzf | sed "s|~|$HOME|")" ;}

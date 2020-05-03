@@ -1,10 +1,19 @@
-export PATH="$HOME/.cargo/bin:$PATH"
+# export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:$HOME/.cargo/bin:$(du "$HOME/.scripts/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export SXHKD='/usr/bin/sh'
 
-#remapSuper script: remap the Caslock to Super key (i3wm uses a lot Super key) 
-setxkbmap -option caps:super
+# Default programs:
+export EDITOR="nvim"
+export TERMINAL="st"
+export BROWSER="firefox"
+export READER="zathura"
+export FILE="lf"
 
-#remapEsc script: But when it is pressed only once, treat it as escape (Vim uses a lot exit)
+# ~/ Clean-up
+export ZDOTDIR="$HOME/.config/zsh"
+
+# Capslock to Super/hold and Escape/press
+setxkbmap -option caps:super
 killall xcape 2>/dev/null ; xcape -e 'Super_L=Escape'
 
 sxhkd &
