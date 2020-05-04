@@ -35,7 +35,7 @@ alias \
 	extoff="udisksctl power-off -b /dev/" \
 	unzip="7z x" \
 	zip="7z a" \
-	aud="pavucontrol" \
+	audio="pavucontrol" \
 	sp="sudo pacman" \
 	f="$FILE" \
 	e="$EDITOR" \
@@ -44,8 +44,8 @@ alias \
 	g="git" \
 	pdf="zathura" \
         img="sxiv" \
-	vid="tsp mpv --no-config --slang=en -ytdl-raw-options=write-auto-sub=,sub-lang=en \"" \
-	mus="mocp" \
+	play="tsp mpv --no-config --slang=en -ytdl-raw-options=write-auto-sub=,sub-lang=en \"" \
+	music="mocp" \
 	discord="cordless" \
 	slack="ripcord" \
 	td="transmission-daemon" \
@@ -55,6 +55,25 @@ alias \
 # Use 'config' instead of 'git' when adding dotfiles to github
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME" \
 
+# Use lf to switch directories and bind it to ctrl-o
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+}
 # Fuzzy scripts
 se() { du -a ~/.scripts/ ~/.config | awk '{print $2}' | fzf | xargs -r $EDITOR ;}
-c() { cp -v "$1" "$(awk '{print $2}' ~/.config/bmdirs | fzf | sed "s|~|$HOME|")" ;}
+o() { 
+	fd -t f -H -I | fzf -m --preview="xdg-mime query default {}" | xargs -ro -d "\n" xdg-open 2>&-
+}
+d() {
+    cd $HOME && cd "$(fd -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)"
+}
+pacs() {
+    sudo pacman -Syy $(pacman -Ssq | fzf -m --preview="pacman -Si {}" --preview-window=:hidden --bind=space:toggle-preview)
+}
+# c() { cp -v "$1" "$(awk '{print $2}' ~/.config/bmdirs | fzf | sed "s|~|$HOME|")" ;}
