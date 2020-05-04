@@ -5,16 +5,16 @@
 # Basic binds
 super + Return
 	$TERMINAL
-super + d
+super + p
 	dmenu_run
 #super + r
 #	$TERMINAL -e $FILE
-super + m
+super + n
 	$TERMINAL -e newsboat
+super + m
+	$TERMINAL -e mocp
 super + c
 	$TERMINAL -e cordless
-#super + v
-#	$TERMINAL -e nvim -c VimwikiIndex
 super + shift + w
 	$BROWSER
 
