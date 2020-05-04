@@ -10,7 +10,6 @@ call plug#begin()
 Plug 'ciaranm/securemodelines'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'justinmk/vim-sneak'
-Plug 'vimwiki/vimwiki'
 
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
@@ -184,6 +183,10 @@ command! -bang -nargs=* Rg
 " # Editor settings
 " =============================================================================
 filetype plugin indent on
+
+set list
+set listchars=tab:▸\ ,eol:¬
+
 set autoindent
 set encoding=utf-8
 set scrolloff=2
